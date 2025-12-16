@@ -10,7 +10,7 @@
 
 / { 
         combos {
-          compatible = "zmk, combos";
+          compatible = "zmk,combos";
           to_qwerty {
             timeout-ms = <50>;
             key-position = <38 39>;
