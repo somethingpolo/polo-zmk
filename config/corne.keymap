@@ -12,6 +12,7 @@
 		behaviors {
 						mt: mod_tap {
 								flavor = "tap-preferred";
+								tapping-term-ms = <200>;
 						};
 				};
 				
@@ -26,9 +27,9 @@
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         display-name = "Base";
                         bindings = <
-   &kp ESC   &kp Q 		&kp W 		&kp F 		&kp P 			&kp G   &kp J 	&kp L  			&kp U		&kp Y   	&kp SQT 		&kp BSPC
-   &kp TAB &mt LGUI A &mt LALT R 	&mt LSHFT S &mt LCTRL T 	&kp D   &kp H 	&mt RCTRL N  	&mt RSHFT E &mt RALT R  &mt RGUI O 	&kp SEMI
-   &kp LCTRL &kp Z 		&kp X 		&kp C 		&kp V 			&kp B  	&kp N 	&kp M  			&kp COMMA 	&kp DOT 	&kp FSLH 		&kp TAB
+   &kp ESC  &kp Q 		&kp W 		&kp F 		&kp P 			&kp G   &kp J 	&kp L  			&kp U		&kp Y   	&kp SQT 		&kp BSPC
+   &kp TAB 	&mt LGUI A 	&mt LALT R 	&mt LSHFT S &mt LCTRL T 	&kp D   &kp H 	&mt RCTRL N  	&mt RSHFT E &mt RALT R  &mt RGUI O 		&kp SEMI
+   &kp LCTRL&kp Z 		&kp X 		&kp C 		&kp V 			&kp B  	&kp N 	&kp M  			&kp COMMA 	&kp DOT 	&kp FSLH 		&kp TAB
                   &mo 2 &mo 1 &kp SPACE   &kp RET &mo 1 &mo 2
                         >;
                 };
@@ -40,9 +41,9 @@
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         display-name = "Lower";
                         bindings = <
-   &kp ESC    &kp N1       &kp N2       &kp N3     	&kp N4      &kp N5         &kp N6   &kp N7   	&kp N8 		&kp N9    	&kp N0 		&kp DEL
-   &kp TAB &kp DLLR 	   &kp PLUS 	&kp LPAR 	&kp RPAR 	&kp AT 		   &kp PIPE &kp MINUS 	&kp EQUAL 	&kp UNDER 	&kp STAR 	&kp SQT
-   &kp LCTRL  &kp EXCL     &HASH       	&kp LBRC    &kp RBRC    &kp TILDE      &kp AMPS &kp LBKT  	&kp RBKT  	&kp PRCNT 	&kp CARET	&trans
+   &kp ESC    	&kp N1      &kp N2       	&kp N3     	&kp N4      &kp N5         &kp N6   &kp N7   	&kp N8 		&kp N9    	&kp N0 		&kp DEL
+   &kp TAB 		&kp DLLR 	&kp PLUS 		&kp LPAR 	&kp RPAR 	&kp AT 		   &kp PIPE &kp MINUS 	&kp EQUAL 	&kp UNDER 	&kp ASTERISK &kp SQT
+   &kp LCTRL  	&kp EXCL    &kp HASH       	&kp LBRC    &kp RBRC    &kp TILDE      &kp AMPS &kp LBKT  	&kp RBKT  	&kp PRCNT 	&kp CARET	&trans
                           	        &kp NUBS     &trans       &kp FSLH      &kp RGUI  &trans   &trans
                         >;
                 };
@@ -53,11 +54,11 @@
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Lower";
+                        display-name = "Media";
                         bindings = <
-   &kp F12 		&kp F1  		&kp F2  		&kp F3  		&kp F4  		&kp F5  		&kp DOWN  &kp RIGHT  &kp F8  &kp F9  &kp F10  &kp F11
-   &bt BT_CLR 	&bt BT_SEL 0 	&bt BT_SEL 1 	&bt BT_SEL 2 	&bt BT_SEL 3 	&bt BT_SEL 4   	&kp LEFT &trans &trans &trans &trans &trans
-   &kp LSHFT  	&trans       	&trans       	&trans       	&trans       	&trans         	&kp UP   &trans   &trans &trans    &trans &trans
+   &kp F12 		&kp F1  		&kp F2  		&kp F3  		&kp F4  		&kp F5  		&kp DOWN  	&kp RIGHT  	&kp F8  &kp F9  &kp F10  &kp F11
+   &bt BT_CLR 	&bt BT_SEL 0 	&bt BT_SEL 1 	&bt BT_SEL 2 	&bt BT_SEL 3 	&bt BT_SEL 4   	&kp LEFT 	&trans 		&trans &trans &trans &trans
+   &kp LSHFT  	&trans       	&trans       	&trans       	&trans       	&trans         	&kp UP   	&trans   	&trans &trans    &trans &trans
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   	&kp RALT
                         >;
                 };
