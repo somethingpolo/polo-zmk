@@ -8,7 +8,15 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-/ {
+/ { 
+    combos {
+      compatible = "zmk, combos";
+      combos_esc {
+        timeout-ms = <50>;
+        key-position = <SPACE RET>;
+        bindings = <&tog 3>;
+      }
+    }
 		behaviors {
 						mt: mod_tap {
 								flavor = "tap-preferred";
@@ -20,40 +28,26 @@
                 compatible = "zmk,keymap";
 
                 default_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         display-name = "Base";
                         bindings = <
-   &kp ESC  &kp Q 		&kp W 		&kp F 		&kp P 			&kp G   &kp J 	&kp L  			&kp U		&kp Y   	&kp SQT 		&kp BSPC
-   &kp TAB 	&mt LGUI A 	&mt LALT R 	&mt LSHFT S &mt LCTRL T 	&kp D   &kp H 	&mt RCTRL N  	&mt RSHFT E &mt RALT I  &mt RGUI O 		&kp SEMI
-   &kp LCTRL&kp Z 		&kp X 		&kp C 		&kp V 			&kp B  	&kp K 	&kp M  			&kp COMMA 	&kp DOT 	&kp FSLH 		&kp TAB
+   &kp ESC    &kp Q 		  &kp W 		  &kp F 		  &kp P 			  &kp G   &kp J 	&kp L  			  &kp U		    &kp Y   	  &kp SQT 		  &kp BSPC
+   &kp TAB 	  &mt LGUI A 	&mt LALT R 	&mt LSHFT S &mt LCTRL T 	&kp D   &kp H 	&mt RCTRL N  	&mt RSHFT E &mt RALT I  &mt RGUI O 		&kp SEMI
+   &kp LCTRL  &kp Z 		  &kp X 		  &kp C 		  &kp V 			  &kp B  	&kp K 	&kp M  			  &kp COMMA 	&kp DOT 	  &kp FSLH 		  &kp TAB
                   &mo 2 &mo 1 &kp SPACE   &kp RET &mo 1 &mo 2
                         >;
                 };
+
                 lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| $ 	| +   | (   | )   | @   |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Lower";
+                        display-name = "NumSym";
                         bindings = <
-   &kp ESC    	&kp N1      &kp N2       	&kp N3     	&kp N4      &kp N5         &kp N6   &kp N7   	&kp N8 		&kp N9    	&kp N0 		&kp DEL
-   &kp TAB 		&kp DLLR 	&kp PLUS 		&kp LPAR 	&kp RPAR 	&kp AT 		   &kp PIPE &kp MINUS 	&kp EQUAL 	&kp UNDER 	&kp ASTERISK &kp SQT
-   &kp LCTRL  	&kp EXCL    &kp HASH       	&kp LBRC    &kp RBRC    &kp TILDE      &kp AMPS &kp LBKT  	&kp RBKT  	&kp PRCNT 	&kp CARET	&trans
+   &kp ESC    &kp N1   w&kp N2    &kp N3    &kp N4    &kp N5    &kp N6   &kp N7   	&kp N8    &kp N9    	&kp N0 		&kp DEL
+   &kp TAB 	  &kp DLLR 	&kp PLUS 	&kp LPAR 	&kp RPAR 	&kp AT    &kp PIPE &kp MINUS 	&kp EQUAL &kp UNDER 	&kp ASTERISK &kp SQT
+   &kp LCTRL  &kp EXCL  &kp HASH  &kp LBRC  &kp RBRC  &kp TILDE &kp AMPS &kp LBKT  	&kp RBKT  &kp PRCNT 	&kp CARET	&trans
                           	        &kp NUBS     &trans       &kp FSLH      &kp RGUI  &trans   &trans
                         >;
                 };
 
                 media_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
                         display-name = "Media";
                         bindings = <
    &kp F12 		&kp F1  		&kp F2  		&kp F3  		&kp F4  		&kp F5  		&kp DOWN  	&kp RIGHT  	&kp F8  &kp F9  &kp F10  &kp F11
@@ -62,9 +56,20 @@
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   	&kp RALT
                         >;
                 };
-				extra_1 {
-						status = "reserved";
-				};
+
+                qwerty_layer {
+                        display-name = "QWERTY";
+                        bindings = <
+   &kp ESC    &kp Q  &kp W  &kp E &kp R &kp T   &kp Y &kp U &kp I &kp O &kp P &kp BSPC
+   &kp LSHFT    &kp A  &kp S  &kp D &kp F &kp G   &kp H &kp J &kp K &kp L &kp SEMI &kp SQT
+   &kp LCTRL  &kp Z  &kp X  &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp TAB
+                  &mo 2 &mo 1 &kp SPACE   &kp RET &mo 1 &mo 2
+                        >;
+                };
+
+                extra_1 {
+                    status = "reserved";
+                };
 				
                 extra_2 {
                         status = "reserved";
