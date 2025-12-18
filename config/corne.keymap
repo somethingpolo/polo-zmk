@@ -51,6 +51,7 @@
         };
 
         media_layer {
+            display-name = "Media";
             bindings = <
 &trans  &trans  &trans  &trans            &trans  &trans              &kp DOWN   &kp RIGHT       &msc SCRL_UP    &trans        &trans           &trans
 &trans  &trans  &trans  &kp LEFT_CONTROL  &trans  &msc SCRL_DOWN      &kp LEFT   &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
