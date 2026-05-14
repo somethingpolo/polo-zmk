@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: marco
       url-base: https://github.com/somethingpolo
+    - name: kevinpastor
+      url-base: https://github.com/kevinpastor
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -11,6 +13,9 @@ manifest:
       import: app/west.yml
     - name: polo-zmk-peripheral-animation
       remote: marco
+      revision: main
+    - name: nice-view-elemental
+      remote: kevinpastor
       revision: main
   self:
     path: config
