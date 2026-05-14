@@ -2,10 +2,15 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: marco
+      url-base: https://github.com/somethingpolo
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: v0.3
       import: app/west.yml
+    - name: polo-zmk-peripheral-animation
+      remote: marco
+      revision: main
   self:
     path: config
