@@ -36,6 +36,17 @@
             quick-tap-ms = <150>;
             require-prior-idle-ms = <125>;
         };
+
+        thumb_mt: thumb_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "THUMB_MOD_TAP";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <145>;
+            quick-tap-ms = <100>;
+            require-prior-idle-ms = <125>;
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     keymap {
@@ -47,7 +58,7 @@
 &mt LGUI ESC  &kp Q         &kp W       &kp F               &kp P    &kp G        &kp J    &kp L    &kp U                &kp Y       &kp SQT       &kp BSPC
 &kp TAB       &kp A         &mt LALT R  &mt LCTRL S         &lt MEDIA T  &kp D     &kp H    &lt MEDIA N  &mt RCTRL E       &mt RALT I  &kp O         &kp SEMI
 &kp LCTRL     &kp Z         &kp X       &kp C               &kp V    &kp B        &kp K    &kp M    &kp COMMA            &kp DOT     &kp FSLH      &kp EQUAL
-                                        &mo FN              &mo NUMSYM  &mt LSHIFT SPACE    &mt LSHIFT RET  &mo NUMSYM  &mo FN
+                                        &mo FN              &mo NUMSYM  &thumb_mt LSHIFT SPACE    &thumb_mt LSHIFT RET  &mo NUMSYM  &mo FN
             >;
         };
 
@@ -57,7 +68,7 @@
 &kp ESC       &kp Q         &kp W       &kp F                    &kp P    &kp G        &kp J    &kp L    &kp U                &kp Y       &kp SQT       &kp BSPC
 &kp TAB       &kp A         &mt LALT R  &mt LCTRL S              &lt LINUX_MEDIA T  &kp D  &kp H    &lt MEDIA N  &mt RCTRL E       &mt RALT I  &kp O         &kp SEMI
 &kp LCTRL     &kp Z         &kp X       &kp C                    &kp V    &kp B        &kp K    &kp M    &kp COMMA            &kp DOT     &kp FSLH      &kp EQUAL
-                                        &kp LGUI                 &mo NUMSYM  &mt LSHIFT SPACE    &mt LSHIFT RET  &mo NUMSYM  &mo FN
+                                        &kp LGUI                 &mo NUMSYM  &thumb_mt LSHIFT SPACE    &thumb_mt LSHIFT RET  &mo NUMSYM  &mo FN
             >;
         };
 
@@ -67,7 +78,7 @@
 &mt LGUI ESC  &kp Q         &kp W       &kp F               &kp P    &kp G        &kp J    &kp L    &kp U                &kp Y       &kp SQT       &kp BSPC
 &kp TAB       &kp A         &mt LALT R  &mt LCTRL S         &lt MEDIA T  &kp D     &kp H    &lt MEDIA N  &mt RCTRL E       &mt RALT I  &kp O         &kp SEMI
 &kp LCTRL     &kp Z         &kp X       &kp C               &kp V    &kp B        &kp K    &kp M    &kp COMMA            &kp DOT     &kp FSLH      &kp EQUAL
-                                        &mo FN              &mo NUMSYM  &mt LSHIFT SPACE    &mt LSHIFT RET  &mo NUMSYM  &mo FN
+                                        &mo FN              &mo NUMSYM  &thumb_mt LSHIFT SPACE    &thumb_mt LSHIFT RET  &mo NUMSYM  &mo FN
             >;
         };
 
@@ -87,7 +98,7 @@
 &trans  &trans  &trans  &trans            &trans  &trans              &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &kp LEFT_CONTROL  &trans  &trans              &kp LEFT  &trans     &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans            &trans  &trans              &kp UP    &trans     &trans  &trans  &trans  &trans
-                        &trans            &trans  &mt LSHIFT SPACE    &trans    &trans     &trans
+                        &trans            &trans  &thumb_mt LSHIFT SPACE    &trans    &trans     &trans
             >;
         };
 
