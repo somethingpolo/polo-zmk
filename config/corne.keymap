@@ -93,7 +93,19 @@ combos {
         bindings = <&kp LG(LS(Z))>;
         layers = <MAC>;
     };
-
+    /*
+     * Top-right quote + backspace keys = Delete.
+     *
+     * Physical positions:
+     * 10 = SQT / P
+     * 11 = BSPC
+     */
+    delete_combo {
+        timeout-ms = <45>;
+        key-positions = <10 11>;
+        bindings = <&kp DEL>;
+        layers = <WIN LINUX MAC QWERTY>;
+    };
     /*
      * Press both inner NumSym thumb keys to return to QWERTY.
      */
