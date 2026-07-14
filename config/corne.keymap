@@ -216,7 +216,7 @@ behaviors {
         &kp AMPS               &kp PIPE           &kp PLUS
 
                                 &trans              &trans
-                                &slash_dance        &trans
+                                &kp FSLH        &trans
                                 &trans              &trans
     >;
 };
