@@ -106,6 +106,34 @@ combos {
         bindings = <&kp DEL>;
         layers = <WIN LINUX MAC QWERTY>;
     };
+
+arrow_up {
+        timeout-ms = <40>;
+        key-positions = <6 7>;
+        bindings = <&kp UP>;
+        layers = <WIN LINUX MAC>;
+    };
+
+    arrow_right {
+        timeout-ms = <40>;
+        key-positions = <7 8>;
+        bindings = <&kp RIGHT>;
+        layers = <WIN LINUX MAC>;
+    };
+
+    arrow_left {
+        timeout-ms = <40>;
+        key-positions = <18 19>;
+        bindings = <&kp LEFT>;
+        layers = <WIN LINUX MAC>;
+    };
+
+    arrow_down {
+        timeout-ms = <40>;
+        key-positions = <30 31>;
+        bindings = <&kp DOWN>;
+        layers = <WIN LINUX MAC>;
+    };
     /*
      * Press both inner NumSym thumb keys to return to QWERTY.
      */
@@ -116,25 +144,37 @@ combos {
     };
 };
 
-    behaviors {
-        mt: mod_tap {
-            flavor = "tap-preferred";
-            tapping-term-ms = <175>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-        };
-
-        thumb_mt: thumb_mod_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "THUMB_MOD_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <145>;
-            quick-tap-ms = <100>;
-            require-prior-idle-ms = <125>;
-            bindings = <&kp>, <&kp>;
-        };
+behaviors {
+    mt: mod_tap {
+        flavor = "tap-preferred";
+        tapping-term-ms = <175>;
+        quick-tap-ms = <150>;
+        require-prior-idle-ms = <125>;
     };
+
+    thumb_mt: thumb_mod_tap {
+        compatible = "zmk,behavior-hold-tap";
+        label = "THUMB_MOD_TAP";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+        tapping-term-ms = <145>;
+        quick-tap-ms = <100>;
+        require-prior-idle-ms = <125>;
+        bindings = <&kp>, <&kp>;
+    };
+
+    /*
+     * Single tap  = /
+     * Double tap  = \
+     */
+    slash_dance: slash_dance {
+        compatible = "zmk,behavior-tap-dance";
+        label = "SLASH_DANCE";
+        #binding-cells = <0>;
+        tapping-term-ms = <175>;
+        bindings = <&kp FSLH>, <&kp BSLH>;
+    };
+};
 
     keymap {
         compatible = "zmk,keymap";
@@ -170,14 +210,22 @@ combos {
         };
 
         numsym_layer {
-            display-name = "NumSym";
-            bindings = <
-&trans  &kp N1                  &kp N2             &kp N3                 &kp N4                 &kp N5       &kp N6    &kp N7      &kp N8       &kp N9    &kp N0    &kp DEL
-&trans  &kp LS(NUMBER_3)        &kp ASTERISK       &kp LPAR               &kp RIGHT_PARENTHESIS  &kp AT       &kp PIPE  &kp MINUS   &kp EQUAL    &kp UNDER &kp CARET &kp DLLR
-&trans  &kp COMMA               &kp PERIOD         &kp LBRC               &kp RBRC               &kp TILDE    &kp AMPS  &kp PRCNT   &kp LBKT     &kp RBKT  &kp EXCL  &kp PLUS
-                                                   &kp BSLH               &trans                 &mt LSHFT FSLH     &mt LSHFT RGUI  &trans  &trans
-            >;
-        };
+    display-name = "NumSym";
+    bindings = <
+/* Numbers */
+&trans  &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp DEL
+
+&trans  &kp LS(NUMBER_3)        &kp ASTERISK       &kp LPAR    &kp LBKT    &kp LBRC        &kp RBRC    &kp RBKT    &kp RIGHT_PARENTHESIS    &kp EXCL &kp CARET    &kp DLLR 
+
+/* Other symbols */
+&trans  &kp COMMA               &kp PERIOD         &kp TILDE    &kp MINUS      &kp AT        &kp EQUAL               &kp PRCNT          &kp UNDER
+        &kp AMPS               &kp PIPE           &kp PLUS
+
+                                &trans              &trans
+                                &slash_dance        &trans
+                                &trans              &trans
+    >;
+};
 
         media_layer {
             display-name = "Media";
