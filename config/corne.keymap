@@ -109,7 +109,7 @@ combos {
 
 arrow_up {
         timeout-ms = <40>;
-        key-positions = <6 7>;
+        key-positions = <30 31>;
         bindings = <&kp UP>;
         layers = <WIN LINUX MAC>;
     };
@@ -130,9 +130,15 @@ arrow_up {
 
     arrow_down {
         timeout-ms = <40>;
-        key-positions = <30 31>;
+        key-positions = <6 7>;
         bindings = <&kp DOWN>;
         layers = <WIN LINUX MAC>;
+    };
+backslash_combo {
+        timeout-ms = <40>;
+        key-positions = <0 1>;
+        bindings = <&kp BSLH>;
+        layers = <NUMSYM>;
     };
     /*
      * Press both inner NumSym thumb keys to return to QWERTY.
@@ -161,18 +167,6 @@ behaviors {
         quick-tap-ms = <100>;
         require-prior-idle-ms = <125>;
         bindings = <&kp>, <&kp>;
-    };
-
-    /*
-     * Single tap  = /
-     * Double tap  = \
-     */
-    slash_dance: slash_dance {
-        compatible = "zmk,behavior-tap-dance";
-        label = "SLASH_DANCE";
-        #binding-cells = <0>;
-        tapping-term-ms = <175>;
-        bindings = <&kp FSLH>, <&kp BSLH>;
     };
 };
 
