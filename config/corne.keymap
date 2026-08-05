@@ -312,7 +312,8 @@
          * LCTRL Z X C V B    K M , . /   ;
          *
          * Thumbs:
-         * FN  NumSym  Space/Shift    Enter/Shift  GUI  FN
+         * GUI  NumSym toggle/hold  Space/Shift
+         * Enter/Shift  GUI/NumSym  FN
          */
         win_layer {
             display-name = "Win";
@@ -328,11 +329,11 @@
 &kp K      &kp M         &comma_dance  &dot_hold_tap EXCL DOT
 &kp FSLH   &kp SEMI
 
-                         &tog FN
+                         &kp LGUI
                          &numsym_toggle_hold NUMSYM NUMSYM
                          &thumb_mt LSHIFT SPACE
                          &thumb_mt RSHIFT RET
-                         &kp RGUI
+                         &num_lt NUMSYM RGUI
                          &tog FN
             >;
         };
@@ -352,11 +353,11 @@
 &kp K      &kp M         &comma_dance  &dot_hold_tap EXCL DOT
 &kp FSLH   &kp SEMI
 
-                              &tog FN
+                              &kp LGUI
                               &numsym_toggle_hold NUMSYM NUMSYM
                               &thumb_mt LSHIFT SPACE
                               &thumb_mt RSHIFT RET
-                              &kp RGUI
+                              &num_lt NUMSYM RGUI
                               &tog FN
             >;
         };
@@ -375,11 +376,11 @@
 &kp K      &kp M         &comma_dance  &dot_hold_tap EXCL DOT
 &kp FSLH   &kp SEMI
 
-                         &tog FN
+                         &kp LGUI
                          &numsym_toggle_hold NUMSYM NUMSYM
                          &thumb_mt LSHIFT SPACE
                          &thumb_mt RSHIFT RET
-                         &kp RGUI
+                         &num_lt NUMSYM RGUI
                          &tog FN
             >;
         };
