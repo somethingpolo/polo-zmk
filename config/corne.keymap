@@ -407,12 +407,12 @@
 
 &trans  &kp LS(NUMBER_3)        &kp ASTERISK    &kp LPAR
         &kp LBRC                &kp LBKT
-        &kp EQUAL               &under_dance    &kp equal_dance
-        &kp AT                  &dollar_dance   &trans
+        &kp AT               &under_dance    &equal_dance
+        &kp AMPS                  &dollar_dance   &trans
 
 &trans  &kp TILDE               &kp GRAVE       &kp RIGHT_PARENTHESIS
         &kp RBRC                &kp RBKT
-        &kp PIPE                &kp AMPS        &kp PRCNT
+        &kp PIPE                &kp PRCNT        &kp COMMA
         &kp DOT                 &kp FSLH         &trans
 
                                 &tog FN
