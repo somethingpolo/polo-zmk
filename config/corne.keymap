@@ -274,6 +274,13 @@
             tapping-term-ms = <175>;
             bindings = <&kp MINUS>, <&kp UNDER>;
         };
+        equal_dance: equal_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+
+            tapping-term-ms = <175>;
+            bindings = <&kp PLUS>, <&kp EQUAL>;
+        };
 
         dollar_dance: dollar_dance {
             compatible = "zmk,behavior-tap-dance";
@@ -400,7 +407,7 @@
 
 &trans  &kp LS(NUMBER_3)        &kp ASTERISK    &kp LPAR
         &kp LBRC                &kp LBKT
-        &kp EQUAL               &under_dance    &kp PLUS
+        &kp EQUAL               &under_dance    &kp equal_dance
         &kp AT                  &dollar_dance   &trans
 
 &trans  &kp TILDE               &kp GRAVE       &kp RIGHT_PARENTHESIS
