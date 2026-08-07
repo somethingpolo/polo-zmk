@@ -135,7 +135,7 @@
         equal_combo {
             timeout-ms = <40>;
             key-positions = <19 20>;
-            bindings = <&kp DOWN>;
+            bindings = <&kp EQUAL>;
             layers = <NUMSYM>;
         };
 
