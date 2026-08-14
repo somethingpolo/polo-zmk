@@ -449,8 +449,8 @@
          * - double-taps to _
          * ^ double-taps to $
          * ! double-taps to ?
-         * Left outer thumb  = |
-         * Right outer thumb = =
+         * NumSym right-inner thumb = =
+         * NumSym right-middle thumb = |
          * M + , on the base layers = \
          */
         numsym_layer {
@@ -472,12 +472,12 @@
         &exclaim_dance          &kp PRCNT        &kp LS(COMMA)
         &kp LS(DOT)             &kp FSLH         &trans
 
-                                &kp PIPE
+                                &trans
                                 &numsym_toggle_hold NUMSYM NUMSYM
                                 &trans
-                                &kp RET
-                                &trans
                                 &kp EQUAL
+                                &kp PIPE
+                                &trans
             >;
         };
 
