@@ -71,28 +71,28 @@
         mac_undo {
             timeout-ms = <40>;
             key-positions = <25 26>;
-            bindings = <&kp LC(Z)>;
+            bindings = <&kp LG(Z)>;
             layers = <MAC>;
         };
 
         mac_copy {
             timeout-ms = <40>;
             key-positions = <26 27>;
-            bindings = <&kp LC(C)>;
+            bindings = <&kp LG(C)>;
             layers = <MAC>;
         };
 
         mac_paste {
             timeout-ms = <40>;
             key-positions = <27 28>;
-            bindings = <&kp LC(V)>;
+            bindings = <&kp LG(V)>;
             layers = <MAC>;
         };
 
         mac_redo {
             timeout-ms = <40>;
             key-positions = <28 29>;
-            bindings = <&kp LC(LS(Z))>;
+            bindings = <&kp LG(LS(Z))>;
             layers = <MAC>;
         };
 
@@ -133,28 +133,18 @@
         };
 
         /*
-         * NumSym:
-         * - + = =
-         */
-        equal_combo {
-            timeout-ms = <40>;
-            key-positions = <19 20>;
-            bindings = <&kp EQUAL>;
-            layers = <NUMSYM>;
-        };
-
-        /*
-         * Base:
-         * , + . = =
+         * Base punctuation combo:
+         * M + , = \
          *
-         * Makes <= and >= easier to type from the same area.
+         * Corne keeps its dedicated / key in the outer column.
          */
-        angle_equal_combo {
+        backslash_combo {
             timeout-ms = <40>;
-            key-positions = <32 33>;
-            bindings = <&kp EQUAL>;
+            key-positions = <31 32>;
+            bindings = <&kp BSLH>;
             layers = <WIN LINUX MAC>;
         };
+
     };
 
     macros {
@@ -282,6 +272,7 @@
             bindings = <&kp>, <&kp>;
         };
 
+
         under_dance: under_dance {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -289,6 +280,7 @@
             tapping-term-ms = <175>;
             bindings = <&kp MINUS>, <&kp UNDER>;
         };
+
 
         dollar_dance: dollar_dance {
             compatible = "zmk,behavior-tap-dance";
@@ -299,16 +291,49 @@
         };
 
         /*
-         * Pipe:
-         * tap        = |
-         * double tap = \
+         * NumSym punctuation:
+         * tap        = !
+         * double tap = ?
          */
-        pipe_dance: pipe_dance {
+        exclaim_dance: exclaim_dance {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
 
             tapping-term-ms = <175>;
-            bindings = <&kp PIPE>, <&kp BSLH>;
+            bindings = <&kp EXCL>, <&kp QMARK>;
+        };
+
+        /*
+         * Linux Super navigation:
+         * single tap = Super + Arrow
+         * double tap = Super + Shift + Arrow
+         */
+        super_down_dance: super_down_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp LG(DOWN)>, <&kp LG(LS(DOWN))>;
+        };
+
+        super_right_dance: super_right_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp LG(RIGHT)>, <&kp LG(LS(RIGHT))>;
+        };
+
+        super_left_dance: super_left_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp LG(LEFT)>, <&kp LG(LS(LEFT))>;
+        };
+
+        super_up_dance: super_up_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp LG(UP)>, <&kp LG(LS(UP))>;
         };
 
         /*
@@ -378,7 +403,7 @@
            &mt RCTRL E   &mt RALT I    &kp O                 &kp DEL
 
 &kp LCTRL  &kp Z         &kp X         &kp C                &kp V           &kp B
-&kp K      &kp M         &comma_hold_tap QMARK COMMA        &dot_hold_tap EXCL DOT
+&kp K      &kp M         &comma_hold_tap QMARK COMMA  &dot_hold_tap EXCL DOT
 &kp FSLH   &kp SEMI
 
                               &kp LGUI
@@ -414,8 +439,19 @@
         };
 
         /*
-         * Inner 30 keys preserve the current Ferris NumSym layout.
-         * Outer-column keys are transparent so the base utility keys remain usable.
+         * NumSym programming layout. Outer-column utility keys stay transparent.
+         *
+         * Inner 30:
+         * 1 2 3 4 5    6 7 8 9 0
+         * # * ( { [    @ - + & ^
+         * ~ ` ) } ]    ! % < > /
+         *
+         * - double-taps to _
+         * ^ double-taps to $
+         * ! double-taps to ?
+         * Left outer thumb  = |
+         * Right outer thumb = =
+         * M + , on the base layers = \
          */
         numsym_layer {
             display-name = "NumSym";
@@ -428,20 +464,20 @@
 
 &trans  &kp LS(NUMBER_3)        &kp ASTERISK    &kp LPAR
         &kp LBRC                &kp LBKT
-        &kp AT                  &under_dance     &kp PLUS
-        &kp AMPS                &dollar_dance    &trans
+        &kp AT               &under_dance    &kp PLUS
+        &kp AMPS                  &dollar_dance   &trans
 
 &trans  &kp TILDE               &kp GRAVE       &kp RIGHT_PARENTHESIS
         &kp RBRC                &kp RBKT
-        &pipe_dance             &kp PRCNT        &kp COMMA
-        &kp DOT                 &kp FSLH         &trans
+        &exclaim_dance          &kp PRCNT        &kp LS(COMMA)
+        &kp LS(DOT)             &kp FSLH         &trans
 
-                                &tog FN
+                                &kp PIPE
                                 &numsym_toggle_hold NUMSYM NUMSYM
                                 &trans
                                 &kp RET
                                 &trans
-                                &tog FN
+                                &kp EQUAL
             >;
         };
 
@@ -497,13 +533,13 @@
 
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(DOWN)  &kp LG(RIGHT)  &trans  &trans  &trans  &trans
+&super_down_dance  &super_right_dance  &trans  &trans  &trans  &trans
 
 &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(LEFT)  &trans  &trans  &trans  &trans  &trans
+&super_left_dance  &trans  &trans  &trans  &trans  &trans
 
 &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(UP)  &trans  &trans  &trans  &trans  &trans
+&super_up_dance  &trans  &trans  &trans  &trans  &trans
 
                      &tog FN
                      &numsym_toggle_hold NUMSYM NUMSYM
